@@ -1,0 +1,82 @@
+Entity Types:
+1. User
+2. Artist
+3. Album
+4. Song
+5. Playlist
+
+
+
+
+Relationship Types:
+1. Artist releases Song
+2. User creates Playlist
+3. Playlist contains Song
+4. User follows Artist
+5. Artist releases Album
+6. User follows User
+
+
+
+
+Cardinality Constraints:
+1. Artist releases Song → 1 : N
+One artist can release many songs, but each song is released by one artist.
+
+2. User creates Playlist → 1 : N
+One user can create many playlists, but each playlist is created by one user.
+
+3. Playlist made of / contains Song → M : N
+One playlist can contain many songs, and one song can appear in many playlists.
+
+4. User listens to Song → M : N
+One user can listen to many songs, and one song can be listened to by many users.
+
+5. User follows Artist → M : N
+One user can follow many artists, and one artist can be followed by many users.
+
+6. Artist releases Album → 1 : N
+One artist can release many albums, but each album is released by one artist.
+
+
+
+
+Participation Constraints:
+1. Artist releases Song
+- Song: total participation because every song must be released by an artist.
+- Artist: partial participation because an artist may exist in the system before releasing any songs.
+
+2. User creates Playlist
+- Playlist: total participation because every playlist must be created by a user.
+- User: partial participation because a user does not have to create a playlist.
+
+3. Playlist contains Song
+- Playlist: partial participation because a playlist could exist before songs are added.
+- Song: partial participation because a song does not have to be in a playlist.
+
+4. User listens to Song
+- User: partial participation because a user may have an account without listening yet.
+- Song: partial participation because a song may exist without being played yet.
+
+5. User follows Artist
+- User: partial participation because a user does not have to follow any artist.
+- Artist: partial participation because an artist may have no followers.
+
+6. Artist releases Album
+- Album: total participation because every album must be released by an artist.
+- Artist: partial participation because an artist may exist before releasing an album.
+
+
+
+
+Assumptions:
+1. Each user has a unique user_id
+2. Each artist hhas a unique artist_id
+3. Each album has a unique album_id
+4. Each song has a unique song_id
+5. Each playlist has a unique playlist_id
+6. A song is released by only one artist in this design
+7. An album is released by only one artist in this design
+8. A playlist is created by exactly one user
+9. A playlist can contain none or as many songs
+10. A song can appear in none or as many playlist
